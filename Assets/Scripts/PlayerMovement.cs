@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float _maxForwardSpeed;
-    [SerializeField] private float _maxBackwardSpeed;
-    [SerializeField] private float _maxStrafeSpeed;
+    [SerializeField] private float _maxForwardSpeed = 5f;
+    [SerializeField] private float _maxBackwardSpeed = 2f;
+    [SerializeField] private float _maxStrafeSpeed = 3f;
+    [SerializeField] private float _runSpeedBoost = 2f;
     [SerializeField] private float _maxLookAngle;
     [SerializeField] private float _minLookAngle;
     [Range (0,2)] [SerializeField] private float _sensitivity = 1;
