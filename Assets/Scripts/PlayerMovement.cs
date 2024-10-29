@@ -6,6 +6,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxBackwardSpeed = 2f;
     [SerializeField] private float _maxStrafeSpeed = 3f;
     [SerializeField] private float _runSpeedBoost = 2f;
+    private float _forwardRunSpeed;
+    private float _backwardRunSpeed;
+    private float _strafeRunSpeed;
     [SerializeField] private float _maxLookAngle;
     [SerializeField] private float _minLookAngle;
     [Range (0,2)] [SerializeField] private float _sensitivity = 1;
@@ -25,6 +28,9 @@ public class PlayerMovement : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _head = GetComponentInChildren<Camera>().transform;
+        _forwardRunSpeed = _maxForwardSpeed + _runSpeedBoost;
+        _backwardRunSpeed = _maxBackwardSpeed + _runSpeedBoost;
+        _strafeRunSpeed = _maxStrafeSpeed + _runSpeedBoost;
         HideCursor();
     }
     void Update()
@@ -65,18 +71,33 @@ public class PlayerMovement : MonoBehaviour
         float forwardAxis = Input.GetAxis("Vertical");
         float strafeAxis = Input.GetAxis("Horizontal");
 
-        if (forwardAxis > 0)
-            _velocity.z = forwardAxis * _maxForwardSpeed;
-        else
-            _velocity.z = forwardAxis * _maxBackwardSpeed;
-        _velocity.x  = strafeAxis * _maxStrafeSpeed;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (forwardAxis > 0)
+                _velocity.z = forwardAxis * _forwardRunSpeed;
+            else
+                _velocity.z = forwardAxis * _backwardRunSpeed;
+            _velocity.x  = strafeAxis * _strafeRunSpeed;
 
-        if (_velocity.magnitude > _maxForwardSpeed)
-            _velocity = _velocity.normalized * (forwardAxis > 0 ? _maxForwardSpeed : _maxBackwardSpeed);
+            if (_velocity.magnitude > _forwardRunSpeed)
+                _velocity = _velocity.normalized * (forwardAxis > 0 ? _forwardRunSpeed : _backwardRunSpeed);
+        }
+        else
+        {
+            if (forwardAxis > 0)
+                _velocity.z = forwardAxis * _maxForwardSpeed;
+            else
+                _velocity.z = forwardAxis * _maxBackwardSpeed;
+            _velocity.x  = strafeAxis * _maxStrafeSpeed;
+
+            if (_velocity.magnitude > _maxForwardSpeed)
+                _velocity = _velocity.normalized * (forwardAxis > 0 ? _maxForwardSpeed : _maxBackwardSpeed);
+        }
     }
     private void UpdatePosition()
     {
         _motion = transform.TransformVector(_velocity * Time.fixedDeltaTime);
+
 
         _controller.Move(_motion);
     }
