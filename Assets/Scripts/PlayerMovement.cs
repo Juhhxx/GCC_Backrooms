@@ -61,8 +61,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void UpdateVelocity()
     {
-        float forwardAxis = Input.GetAxis("Forward");
-        float strafeAxis = Input.GetAxis("Strafe");
+        float forwardAxis = Input.GetAxis("Vertical");
+        float strafeAxis = Input.GetAxis("Horizontal");
 
         if (forwardAxis > 0)
             _velocity.z = forwardAxis * _maxForwardSpeed;
