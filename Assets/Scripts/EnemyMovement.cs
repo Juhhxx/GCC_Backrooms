@@ -13,24 +13,25 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float _detectRadius = 10f;
     [SerializeField] private bool _drawGizmos = true;
     private Transform _playerTrans;
-    private Rigidbody rb;
-    private NavMeshAgent agent;
-    private Vector3 pointTarget;
-    private bool isChasing = false;
+    private Rigidbody _rb;
+    private NavMeshAgent _agent;
+    private Vector3 _pointTarget;
+    private bool _isChasing = false;
+
+    // ENEMY IS GETTING A BUMP WHEN HE STARTS <= NEEDS FIXING
     void Start()
     {
         _playerTrans = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        rb = GetComponent<Rigidbody>();
-        agent = GetComponent<NavMeshAgent>();
-        agent.speed = _normalSpeed;
-        pointTarget = rb.position;
+        _rb = GetComponent<Rigidbody>();
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.speed = _normalSpeed;
+        _pointTarget = _rb.position;
         StartCoroutine(EnemyControl());
     }
     void Update()
     {
         UpdateRotation();
-
-        if (isChasing)
+        if (_isChasing)
         {
             ChasePlayer();
             Debug.Log("CHASING PLAYER", gameObject);
@@ -41,15 +42,15 @@ public class EnemyMovement : MonoBehaviour
             Debug.Log("ROAMING AROUND", gameObject);
         }
     }
-    void MoveObject(Vector3 target)
-    {
-        agent.destination = target;
-    }
     void UpdateRotation()
     {
         Vector3 targetPosition = new Vector3(_playerTrans.position.x,transform.position.y,_playerTrans.position.z);
 
         transform.LookAt(targetPosition);
+    }
+    void MoveObject(Vector3 target)
+    {
+        _agent.destination = target;
     }
     private Vector3 RandomNavmeshLocation(float radiusMin, float radiusMax)
     {
@@ -65,29 +66,29 @@ public class EnemyMovement : MonoBehaviour
     }
     private void WalkToPoint()
     {
-        agent.speed = _normalSpeed;
-        agent.stoppingDistance = 0f;
+        _agent.speed = _normalSpeed;
+        _agent.stoppingDistance = 0f;
 
-        if (rb.position == pointTarget)
-            pointTarget = RandomNavmeshLocation(_walkRadiusMin,_walkRadiusMax);
+        if (_rb.position == _pointTarget)
+            _pointTarget = RandomNavmeshLocation(_walkRadiusMin,_walkRadiusMax);
 
-        Vector3 correctedTarget = pointTarget;
+        Vector3 correctedTarget = _pointTarget;
         correctedTarget.y = 0;
 
         MoveObject(correctedTarget);
         
-        Debug.Log($"Walking to ({pointTarget.z},{pointTarget.x})");
+        Debug.Log($"Walking to ({_pointTarget.z},{_pointTarget.x})");
     }
     private bool DetectPlayer()
     {
-        if (Vector3.Distance(rb.position,_playerTrans.position) <= _detectRadius)
+        if (Vector3.Distance(_rb.position,_playerTrans.position) <= _detectRadius)
         {
             RaycastHit hit;
             
-            if (Physics.Raycast(rb.position,_playerTrans.position - rb.position,out hit))
+            if (Physics.Raycast(_rb.position,_playerTrans.position - _rb.position,out hit))
             {
-                Debug.DrawLine(rb.position,_playerTrans.position,new Color(0f,0f,1f));
-                Debug.DrawLine(rb.position,hit.point,new Color(1f,0f,0f));
+                Debug.DrawLine(_rb.position,_playerTrans.position,new Color(0f,0f,1f));
+                Debug.DrawLine(_rb.position,hit.point,new Color(1f,0f,0f));
 
                 Debug.Log($"{hit.collider.gameObject.name} WAS HIT");
                 return hit.collider.gameObject.GetComponentInParent<PlayerMovement>() != null;
@@ -97,8 +98,8 @@ public class EnemyMovement : MonoBehaviour
     }
     private void ChasePlayer()
     {
-        agent.speed = _chaseSpeed;
-        agent.stoppingDistance = 2f;
+        _agent.speed = _chaseSpeed;
+        _agent.stoppingDistance = 2f;
 
         MoveObject(_playerTrans.position);
     }
@@ -110,12 +111,12 @@ public class EnemyMovement : MonoBehaviour
         {
             if (DetectPlayer())
             {
-                isChasing = true;
+                _isChasing = true;
                 waitSeconds = 4f;
             }
             else
             {
-                isChasing = false;
+                _isChasing = false;
                 waitSeconds = 0f;
             }
 
