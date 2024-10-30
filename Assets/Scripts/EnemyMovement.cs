@@ -90,7 +90,6 @@ public class EnemyMovement : MonoBehaviour
                 Debug.DrawLine(rb.position,hit.point,new Color(1f,0f,0f));
 
                 Debug.Log($"{hit.collider.gameObject.name} WAS HIT");
-
                 return hit.collider.gameObject.GetComponentInParent<PlayerMovement>() != null;
             }
         }
