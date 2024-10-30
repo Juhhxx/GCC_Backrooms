@@ -122,8 +122,8 @@ MonoBehaviour:
   _chaseSpeed: 5.5
   _walkRadiusMin: 25
   _walkRadiusMax: 40
-  _detectRadius: 15
-  _drawGizmos: 0
+  _detectRadius: 20
+  _drawGizmos: 1
 --- !u!1 &6152045907101962422
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,8 +64,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0.01
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -278,6 +278,7 @@ MonoBehaviour:
   _maxForwardSpeed: 5
   _maxBackwardSpeed: 2
   _maxStrafeSpeed: 3
+  _runSpeedBoost: 2
   _maxLookAngle: 70
   _minLookAngle: 290
   _sensitivity: 1

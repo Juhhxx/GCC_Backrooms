@@ -3,3 +3,7 @@ AssetList GCC - Backroomms
 Room : 
 https://sketchfab.com/3d-models/original-backrooms-e5c6b30995ff442d9852a1dd697aaef1
 https://sketchfab.com/3d-models/backrooms-another-level-429f3c9ea8024f5e9bb78f6649c7bd26 <
+
+Wall Texture:
+https://sketchfab.com/3d-models/backrooms-wallpapers-2c36079726a84d5db6369c7261d73152#download
+
