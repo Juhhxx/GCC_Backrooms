@@ -11,6 +11,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float _walkRadiusMin = 20f;
     [SerializeField] private float _walkRadiusMax = 50f;
     [SerializeField] private float _detectRadius = 10f;
+    [SerializeField] private float _stopDistancePlayer = 2f;
+    [SerializeField] private float _playerMemoryTime = 4f;
     [SerializeField] private bool _drawGizmos = true;
     private Transform _playerTrans;
     private Rigidbody _rb;
@@ -99,7 +101,7 @@ public class EnemyMovement : MonoBehaviour
     private void ChasePlayer()
     {
         _agent.speed = _chaseSpeed;
-        _agent.stoppingDistance = 2f;
+        _agent.stoppingDistance = _stopDistancePlayer;
 
         MoveObject(_playerTrans.position);
     }
@@ -112,7 +114,7 @@ public class EnemyMovement : MonoBehaviour
             if (DetectPlayer())
             {
                 _isChasing = true;
-                waitSeconds = 4f;
+                waitSeconds = _playerMemoryTime;
             }
             else
             {
