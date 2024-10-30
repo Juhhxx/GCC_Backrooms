@@ -71,7 +71,10 @@ public class EnemyMovement : MonoBehaviour
         if (rb.position == pointTarget)
             pointTarget = RandomNavmeshLocation(_walkRadiusMin,_walkRadiusMax);
 
-        MoveObject(pointTarget);
+        Vector3 correctedTarget = pointTarget;
+        correctedTarget.y = 0;
+
+        MoveObject(correctedTarget);
         
         Debug.Log($"Walking to ({pointTarget.z},{pointTarget.x})");
     }
@@ -84,7 +87,7 @@ public class EnemyMovement : MonoBehaviour
             if (Physics.Raycast(rb.position,_playerTrans.position - rb.position,out hit))
             {
                 Debug.DrawLine(rb.position,_playerTrans.position,new Color(0f,0f,1f));
-                Debug.DrawLine(rb.position,hit.collider.gameObject.transform.position,new Color(1f,0f,0f));
+                Debug.DrawLine(rb.position,hit.point,new Color(1f,0f,0f));
 
                 Debug.Log($"{hit.collider.gameObject.name} WAS HIT");
 
