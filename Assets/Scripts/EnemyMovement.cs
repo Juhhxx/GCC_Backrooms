@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.AI;
-using NUnit.Framework.Constraints;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -89,8 +88,8 @@ public class EnemyMovement : MonoBehaviour
             
             if (Physics.Raycast(_rb.position,_playerTrans.position - _rb.position,out hit))
             {
-                Debug.DrawLine(_rb.position,_playerTrans.position,new Color(0f,0f,1f));
-                Debug.DrawLine(_rb.position,hit.point,new Color(1f,0f,0f));
+                Debug.DrawLine(_rb.position,_playerTrans.position,Color.blue);
+                Debug.DrawLine(_rb.position,hit.point,Color.red);
 
                 Debug.Log($"{hit.collider.gameObject.name} WAS HIT");
                 return hit.collider.gameObject.GetComponentInParent<PlayerMovement>() != null;

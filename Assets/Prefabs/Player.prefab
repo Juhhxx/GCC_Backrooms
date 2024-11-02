@@ -212,8 +212,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5194677710868646617}
   - component: {fileID: 6020880541599737479}
-  - component: {fileID: 3199058894169190794}
   - component: {fileID: 7092280348002192786}
+  - component: {fileID: 3199058894169190794}
+  - component: {fileID: 8781961438584293741}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -263,25 +264,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &3199058894169190794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8947016124636284882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ac753552cc4bc498f8d35f34dfadb0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxForwardSpeed: 5
-  _maxBackwardSpeed: 2
-  _maxStrafeSpeed: 3
-  _runSpeedBoost: 2
-  _maxLookAngle: 70
-  _minLookAngle: 290
-  _sensitivity: 1
 --- !u!114 &7092280348002192786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,3 +284,35 @@ MonoBehaviour:
   m_IgnoreFromBuild: 1
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!114 &3199058894169190794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947016124636284882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ac753552cc4bc498f8d35f34dfadb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxForwardSpeed: 5
+  _maxBackwardSpeed: 2
+  _maxStrafeSpeed: 3
+  _runSpeedBoost: 2
+  _maxLookAngle: 70
+  _minLookAngle: 290
+  _sensitivity: 1
+--- !u!114 &8781961438584293741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8947016124636284882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d161138a77b106c4aa29531c936c6807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reachDistance: 5
