@@ -23,10 +23,14 @@ public class PlayerInteract : MonoBehaviour
 
         if (Physics.Raycast(originPoint, reachPoint, out objectHit, reachDistance))
         {
-            if (objectHit.collider.gameObject.GetComponent<Interactive>() != null)
+            Interactive interactive = objectHit.collider.gameObject.GetComponent<Interactive>();
+
+            if (interactive != null)
             {
                 Debug.DrawLine(originPoint, objectHit.point, Color.red);
                 Debug.Log("THERE IS AN OBJECT WITHIN REACH");
+                if (Input.GetKeyDown(KeyCode.E))
+                    interactive.Interact();
             }
         }
 
