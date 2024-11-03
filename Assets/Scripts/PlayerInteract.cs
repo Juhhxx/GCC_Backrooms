@@ -33,6 +33,10 @@ public class PlayerInteract : MonoBehaviour
                     interactive.Interact();
             }
         }
-
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(0f, 1f, 1f, 0.3f);
+        Gizmos.DrawSphere(transform.position + new Vector3(0f,1.65f,0.2f),reachDistance);
     }
 }
