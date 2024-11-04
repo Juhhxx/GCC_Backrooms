@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private float _reachDistance = 5;
+    [SerializeField] private bool _drawGizmos;
     private Transform _cameraTrans;
     void Start()
     {
@@ -37,6 +38,7 @@ public class PlayerInteract : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(0f, 1f, 1f, 0.3f);
-        Gizmos.DrawSphere(transform.position + new Vector3(0f,1.65f,0.2f),_reachDistance);
+        if (_drawGizmos)
+            Gizmos.DrawSphere(transform.position + new Vector3(0f,1.65f,0.2f),_reachDistance);
     }
 }

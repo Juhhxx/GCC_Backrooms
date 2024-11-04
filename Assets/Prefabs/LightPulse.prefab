@@ -214,8 +214,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7826823351790539337}
+  - component: {fileID: 7001735437379579079}
   m_Layer: 6
-  m_Name: Light
+  m_Name: LightPulse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,3 +239,18 @@ Transform:
   - {fileID: 1178552174499722388}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7001735437379579079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458606295689683934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5869a97aeb0c8d846954392f044367a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offChance: 0.1
+  _lightOn: {fileID: 2100000, guid: 0ee63af74be7c674c8e81e6e7caeaf4c, type: 2}
+  _lightOff: {fileID: 2100000, guid: 846b58eedae4eed4c9bf59caa462180b, type: 2}
