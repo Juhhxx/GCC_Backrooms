@@ -315,4 +315,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d161138a77b106c4aa29531c936c6807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reachDistance: 5
+  reachDistance: 3
