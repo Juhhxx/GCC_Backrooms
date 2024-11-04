@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Interactive : MonoBehaviour
 {
-    Animator anim;
+    Animator _anim;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
     }
 
     public void Interact()
     {
-        anim.SetTrigger("Interact");
+        _anim.SetTrigger("Interact");
     }
 }

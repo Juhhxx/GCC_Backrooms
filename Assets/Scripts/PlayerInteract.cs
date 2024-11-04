@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-    [SerializeField] private float reachDistance = 5;
-    private Transform cameraTrans;
+    [SerializeField] private float _reachDistance = 5;
+    private Transform _cameraTrans;
     void Start()
     {
-        cameraTrans = GetComponentInChildren<Camera>().gameObject.transform;
+        _cameraTrans = GetComponentInChildren<Camera>().gameObject.transform;
     }
     void Update()
     {
@@ -14,14 +14,14 @@ public class PlayerInteract : MonoBehaviour
     }
     private void CheckForObjectInReach()
     {
-        Vector3 originPoint = cameraTrans.position;
-        Vector3 reachPoint = cameraTrans.forward;
+        Vector3 originPoint = _cameraTrans.position;
+        Vector3 reachPoint = _cameraTrans.forward;
 
         RaycastHit objectHit;
 
-        Debug.DrawLine(originPoint, originPoint + (reachPoint * reachDistance), Color.blue);
+        Debug.DrawLine(originPoint, originPoint + (reachPoint * _reachDistance), Color.blue);
 
-        if (Physics.Raycast(originPoint, reachPoint, out objectHit, reachDistance))
+        if (Physics.Raycast(originPoint, reachPoint, out objectHit, _reachDistance))
         {
             Interactive interactive = objectHit.collider.gameObject.GetComponent<Interactive>();
 
@@ -37,6 +37,6 @@ public class PlayerInteract : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(0f, 1f, 1f, 0.3f);
-        Gizmos.DrawSphere(transform.position + new Vector3(0f,1.65f,0.2f),reachDistance);
+        Gizmos.DrawSphere(transform.position + new Vector3(0f,1.65f,0.2f),_reachDistance);
     }
 }

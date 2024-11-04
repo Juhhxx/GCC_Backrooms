@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class ButtonSwitch : MonoBehaviour
 {
-    private Material buttonMaterial;
-    private bool isOn;
+    private Material _buttonMaterial;
+    private bool _isOn;
     void Start()
     {
-        buttonMaterial = GetComponent<MeshRenderer>().material;
+        _buttonMaterial = GetComponent<MeshRenderer>().material;
     }
     void Update()
     {
-        if (isOn)
-            buttonMaterial.color = Color.green;
+        if (_isOn)
+            _buttonMaterial.color = Color.green;
         else
-            buttonMaterial.color = Color.red;
+            _buttonMaterial.color = Color.red;
     }
     public void Switch()
     {
-        isOn = !isOn;
+        _isOn = !_isOn;
     }
 }
