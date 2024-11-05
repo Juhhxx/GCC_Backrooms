@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
     [SerializeField] private float _reachDistance = 5;
+    [SerializeField] private TextMeshProUGUI _tmp;
     [SerializeField] private bool _drawGizmos;
     private Transform _cameraTrans;
     void Start()
@@ -30,11 +32,20 @@ public class PlayerInteract : MonoBehaviour
             {
                 Debug.DrawLine(originPoint, objectHit.point, Color.red);
                 Debug.Log("THERE IS AN OBJECT WITHIN REACH");
+                TurnOnInteractText(interactive.DisplayText);
                 if (Input.GetKeyDown(KeyCode.E))
                     interactive.Interact();
             }
+            else
+                TurnOffInteractText();
         }
     }
+    private void TurnOnInteractText(string text)
+    {
+        _tmp.text = text;
+        _tmp.gameObject.SetActive(true);
+    }
+    private void TurnOffInteractText() => _tmp.gameObject.SetActive(false);
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(0f, 1f, 1f, 0.3f);
