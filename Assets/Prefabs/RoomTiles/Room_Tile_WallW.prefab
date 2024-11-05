@@ -504,13 +504,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c98c75b78c3e3842944d60ef5fdccdc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6499082029508617978}
   m_SourcePrefab: {fileID: 100100000, guid: 9c98c75b78c3e3842944d60ef5fdccdc, type: 3}
 --- !u!4 &280872475185820729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9c98c75b78c3e3842944d60ef5fdccdc, type: 3}
   m_PrefabInstance: {fileID: 319585674571273170}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &625451329851158147 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 9c98c75b78c3e3842944d60ef5fdccdc, type: 3}
+  m_PrefabInstance: {fileID: 319585674571273170}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &6499082029508617978
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625451329851158147}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1550514412580984892, guid: 9c98c75b78c3e3842944d60ef5fdccdc, type: 3}
 --- !u!1001 &7531724724532927473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -585,3 +615,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7826823351790539337, guid: e5ebe9c20c8241241adbb746319b2550, type: 3}
   m_PrefabInstance: {fileID: 7531724724532927473}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8178854156871063315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 12395, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Palette Settings
+  m_EditorClassIdentifier: 
+  cellSizing: 0
+  m_TransparencySortMode: 0
+  m_TransparencySortAxis: {x: 0, y: 0, z: 1}

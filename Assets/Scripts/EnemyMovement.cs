@@ -14,7 +14,6 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float _playerMemoryTime = 4f;
     [SerializeField] private bool _drawGizmos = true;
     private Transform _playerTrans;
-    private Rigidbody _rb;
     private NavMeshAgent _agent;
     private Vector3 _pointTarget;
     private bool _isChasing = false;
@@ -23,10 +22,9 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         _playerTrans = FindAnyObjectByType<PlayerMovement>().gameObject.transform;
-        _rb = GetComponent<Rigidbody>();
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = _normalSpeed;
-        _pointTarget = _rb.position;
+        _pointTarget = transform.position;
         StartCoroutine(EnemyControl());
     }
     void Update()
@@ -70,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
         _agent.speed = _normalSpeed;
         _agent.stoppingDistance = 0f;
 
-        if (_rb.position == _pointTarget)
+        if (transform.position == _pointTarget)
             _pointTarget = RandomNavmeshLocation(_walkRadiusMin,_walkRadiusMax);
 
         Vector3 correctedTarget = _pointTarget;
@@ -82,14 +80,14 @@ public class EnemyMovement : MonoBehaviour
     }
     private bool DetectPlayer()
     {
-        if (Vector3.Distance(_rb.position,_playerTrans.position) <= _detectRadius)
+        if (Vector3.Distance(transform.position,_playerTrans.position) <= _detectRadius)
         {
             RaycastHit hit;
             
-            if (Physics.Raycast(_rb.position,_playerTrans.position - _rb.position,out hit))
+            if (Physics.Raycast(transform.position,_playerTrans.position - transform.position,out hit))
             {
-                Debug.DrawLine(_rb.position,_playerTrans.position,Color.blue);
-                Debug.DrawLine(_rb.position,hit.point,Color.red);
+                Debug.DrawLine(transform.position,_playerTrans.position,Color.blue);
+                Debug.DrawLine(transform.position,hit.point,Color.red);
 
                 Debug.Log($"{hit.collider.gameObject.name} WAS HIT");
                 return hit.collider.gameObject.GetComponentInParent<PlayerMovement>() != null;
