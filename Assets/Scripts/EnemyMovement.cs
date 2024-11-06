@@ -53,6 +53,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private Vector3 RandomNavmeshLocation(float radiusMin, float radiusMax)
     {
+        Debug.Log($"{gameObject.name} is chosing new point");
         float radius = Random.Range(radiusMin,radiusMax);
         Vector3 randomDirection = Random.insideUnitSphere * radius;
         randomDirection += transform.position;
@@ -68,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
         _agent.speed = _normalSpeed;
         _agent.stoppingDistance = 0f;
 
-        if (transform.position == _pointTarget)
+        if (transform.position.x == _pointTarget.x && transform.position.z == _pointTarget.z)
             _pointTarget = RandomNavmeshLocation(_walkRadiusMin,_walkRadiusMax);
 
         Vector3 correctedTarget = _pointTarget;
@@ -76,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
 
         MoveObject(correctedTarget);
         
-        Debug.Log($"Walking to ({_pointTarget.z},{_pointTarget.x})");
+        Debug.Log($"Walking to {correctedTarget}\nHas arrived : {transform.position.x == _pointTarget.x && transform.position.z == _pointTarget.z}");
     }
     private bool DetectPlayer()
     {
@@ -101,6 +102,10 @@ public class EnemyMovement : MonoBehaviour
         _agent.stoppingDistance = _stopDistancePlayer;
 
         MoveObject(_playerTrans.position);
+    }
+    public void FollowSound(Vector3 source)
+    {
+        _pointTarget = source;
     }
     private IEnumerator EnemyControl()
     {

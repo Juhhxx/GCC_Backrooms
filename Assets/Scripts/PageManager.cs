@@ -5,7 +5,9 @@ using UnityEngine;
 public class PageManager : MonoBehaviour
 {
     private int _totalPages;
+    public int TotalPages => _totalPages;
     private int _collectedPages = 0;
+    public int CollectedPages => _collectedPages;
     private TextMeshProUGUI _tmp;
     void Start()
     {
