@@ -2,7 +2,8 @@ AssetList GCC - Backroomms
 
 Room : 
 https://sketchfab.com/3d-models/original-backrooms-e5c6b30995ff442d9852a1dd697aaef1
-https://sketchfab.com/3d-models/backrooms-another-level-429f3c9ea8024f5e9bb78f6649c7bd26 <
+https://loafbrr.itch.io/backrooms-like-asset-pack < took textures from here
+
 
 Wall Texture:
 https://sketchfab.com/3d-models/backrooms-wallpapers-2c36079726a84d5db6369c7261d73152#download
@@ -15,3 +16,6 @@ Table:
 
 Computer:
 https://sketchfab.com/3d-models/psx-dirty-old-pc-86072efd9b9a4ceb99f07c4b5a986075
+Computer being Used Sound: Sound Effect by <a href="https://pixabay.com/users/hasin2004-46173687/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=247412">Hasin Amanda</a> from <a href="https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=247412">Pixabay</a>
+Computer Sound: Sound Effect by <a href="https://pixabay.com/users/soul_serenity_ambience-6817262/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=236384">Soul_Serenity_Ambience</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=236384">Pixabay</a>
+

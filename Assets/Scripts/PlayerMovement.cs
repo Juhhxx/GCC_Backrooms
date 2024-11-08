@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxBackwardSpeed = 2f;
     [SerializeField] private float _maxStrafeSpeed = 3f;
     [SerializeField] private float _runSpeedBoost = 2f;
+    [SerializeField] private AudioClip _walkingSound;
+    [SerializeField] private AudioClip _runningSound;
     private float _forwardRunSpeed;
     private float _backwardRunSpeed;
     private float _strafeRunSpeed;
@@ -19,14 +21,17 @@ public class PlayerMovement : MonoBehaviour
         set => _sensitivity = value;
     }
     private CharacterController _controller;
+    private AudioSource _audioSource;
     private Vector3 _velocity;
     private Vector3 _motion;
     private Transform _head;
     private Vector3 _headRotation;
+    private bool _isRunning;
 
     void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _audioSource = GetComponent<AudioSource>();
         _head = GetComponentInChildren<Camera>().transform;
         _forwardRunSpeed = _maxForwardSpeed + _runSpeedBoost;
         _backwardRunSpeed = _maxBackwardSpeed + _runSpeedBoost;
@@ -42,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         UpdateVelocity();
         UpdatePosition();
+        PlaySound();
     }
     private void HideCursor()
     {
@@ -73,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
+            _isRunning = true;
+
             if (forwardAxis > 0)
                 _velocity.z = forwardAxis * _forwardRunSpeed;
             else
@@ -84,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            _isRunning = false;
+
             if (forwardAxis > 0)
                 _velocity.z = forwardAxis * _maxForwardSpeed;
             else
@@ -100,6 +110,18 @@ public class PlayerMovement : MonoBehaviour
 
 
         _controller.Move(_motion);
+    }
+    private void PlaySound()
+    {
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
+        {
+            _audioSource.clip  = _isRunning ? _runningSound : _walkingSound;
+
+
+            if (!_audioSource.isPlaying) _audioSource.Play(); Debug.Log("Playing Footsteps");
+        }
+        else if (_audioSource.isPlaying)
+            _audioSource.Pause(); Debug.Log("Stop Footsteps");
     }
 }
 

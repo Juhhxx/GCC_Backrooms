@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 060e02c511e210945b53a07b7fbd8e69
+  - enabled: 1
     path: Assets/Scenes/MainGame.unity
     guid: f04a1bc9521d65545af7d03114be8d02
+  - enabled: 1
+    path: Assets/Scenes/JumpScare_Diogo.unity
+    guid: cb9a13d07d405c943bb69f74bca4e0a2
+  - enabled: 1
+    path: Assets/Scenes/JumpScare_Wilson.unity
+    guid: e90c395013129074ca4933eb08f9c3b9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

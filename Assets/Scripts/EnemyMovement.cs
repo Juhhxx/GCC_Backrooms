@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEngine.AI;
 
@@ -12,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float _detectRadius = 10f;
     [SerializeField] private float _stopDistancePlayer = 2f;
     [SerializeField] private float _playerMemoryTime = 4f;
+    [SerializeField] private string _jumpscareScene;
     [SerializeField] private bool _drawGizmos = true;
     private Transform _playerTrans;
     private NavMeshAgent _agent;
@@ -102,6 +104,9 @@ public class EnemyMovement : MonoBehaviour
         _agent.stoppingDistance = _stopDistancePlayer;
 
         MoveObject(_playerTrans.position);
+
+        if (Vector3.Distance(transform.position,_playerTrans.position) <= _stopDistancePlayer)
+            SceneManager.LoadScene(_jumpscareScene);
     }
     public void FollowSound(Vector3 source)
     {
